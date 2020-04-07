@@ -26,12 +26,6 @@ describe 'nodejsNginx::default' do
     it 'should install nginx' do
       expect(chef_run).to install_package 'nginx'
     end
-
-    # install node js
-    # git this to be installed from dependency
-    it 'should install nodejs' do
-      expect(chef_run).to install_package 'nodejs'
-    end
     # Services
     # Nginx
     it 'should enable nginx' do
@@ -53,6 +47,20 @@ describe 'nodejsNginx::default' do
 
     it 'should link a proxy.conf to sites enabled' do
       expect(chef_run).to delete_link("/etc/nginx/sites-enabled/default")
+    end
+
+    # install node js
+    # git this to be installed from dependency
+    it 'should install nodejs from recipe' do
+      expect(chef_run).to include_recipe 'nodejs'
+    end
+
+    it 'should install pm2 via npm' do
+      expect(chef_run).to install_nodejs_npm('pm2')
+    end
+
+    it 'should install react via npm' do
+      expect(chef_run).to install_nodejs_npm('react')
     end
   end
 end
