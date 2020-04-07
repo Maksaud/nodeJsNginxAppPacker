@@ -15,6 +15,8 @@ to use it import it in your own cookbook and run it in the recipeis.
 
 ## Installation section
 
+To provision a chef script
+
 ## Test
 
 To run the unit test.
