@@ -32,7 +32,7 @@ link '/etc/nginx/sites-enabled/default' do
 end
 
 include_recipe 'nodejs'
-package 'npm'
+# package 'npm'
 npm_package 'pm2'
 
 npm_package 'react'
